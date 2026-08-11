@@ -1,6 +1,7 @@
 // router => @GetMapping / @PostMapping
 import HomeView from "@/views/HomeView.vue";
 import RecipeDetailView from "@/views/RecipeDetailView.vue";
+import RecipeFindView from "@/views/RecipeFindView.vue";
 import YoutubeView from "@/views/YoutubeView.vue";
 import { createRouter,createWebHistory } from "vue-router";
 const routes=[
@@ -18,6 +19,11 @@ const routes=[
         path:"/youtube/list",
         name:"youtube",
         component:YoutubeView
+    },
+    {
+        path:"/recipe/find",
+        name:"recipe_find",
+        component:RecipeFindView
     }
 
 ]

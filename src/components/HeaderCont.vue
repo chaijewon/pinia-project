@@ -10,7 +10,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">레시피
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                <li><a href="/recipe/find">레시피 검색</a></li>
+                <li><router-link to="/recipe/find">레시피 검색</router-link></li>
                 <li><a href="/recipe/chef_list">쉐프</a></li>
                 </ul>
             </li>
