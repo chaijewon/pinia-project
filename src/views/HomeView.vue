@@ -5,21 +5,23 @@
         </div>
         <div class="row" style="margin-top: 10px">
             <div class="col-sm-3" v-for="(vo,index) in recipe_list.list" :key="index">
-                <a href="#">
+                <router-link :to="{name:'recipe_detail',params:{no:vo.no}}">
                 <div class="thumbnail">
                     <img :src="vo.poster" 
                          :title="vo.title"
                         style="width: 250px;height: 150px">
                     <p style="color:red">{{vo.chef}}</p>
                 </div>
-                </a>
+                </router-link>
             </div>
         </div>
         <div class="row text-center" style="margin-top: 10px;">
             <ul class="pagination">
-                <li v-if="recipe_list.pages[2]>1"><a class="a-link">&laquo;</a></li>
-                <li v-for="(i,index) in range(recipe_list.pages[2],recipe_list.pages[3])" :key="index"><a class="a-link">{{ i }}</a></li>
-                <li v-if="recipe_list.pages[3]<recipe_list.pages[1]"><a class="a-link">&raquo;</a></li>
+                <li v-if="recipe_list.pages[2]>1"><a class="a-link" @click="recipeListData(recipe_list.pages[2]-1)">&laquo;</a></li>
+                <li v-for="(i,index) in range(recipe_list.pages[2],recipe_list.pages[3])" :key="index"
+                 :class="i==recipe_list.pages[0]?'active':''"
+                ><a class="a-link" @click="recipeListData(i)">{{ i }}</a></li>
+                <li v-if="recipe_list.pages[3]<recipe_list.pages[1]"><a class="a-link" @click="recipeListData(recipe_list.pages[3]+1)">&raquo;</a></li>
             </ul>
         </div> 
     </div>
@@ -28,6 +30,7 @@
 import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRecipeStore } from '@/store/recipe';
+
 /*
     HomeView 실행  브라우저에서 / 
        |
@@ -67,6 +70,11 @@ import { useRecipeStore } from '@/store/recipe';
                             <template>안에 있는 
                             HTML이 자동 변경이 된다
     const foodListData=()=>{}
+
+    pages[0] curpage
+    pages[1] totalpage
+    pages[2] startPage
+    pages[3] endPage
     
 */
    const recipeStore=useRecipeStore()

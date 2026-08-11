@@ -11,7 +11,11 @@ export const useRecipeStore=defineStore('recipe',{
          pages:[],
          count:0
       },
-      recipe_detail:{},
+      recipe_detail:{
+         vo:{},
+         mList:[],
+         iList:[]
+      },
       find_list:{}
    }),
    // 2. action => 서버와 연결 => 데이터 처리
@@ -26,6 +30,15 @@ export const useRecipeStore=defineStore('recipe',{
         })
         console.log(response)
         this.recipe_list=response.data
+      },
+      async recipeDetailData(no){
+         const response=await axios.get('http://localhost:8080/recipe/detail_vue',{
+            params:{
+               no   
+            }
+         })
+         console.log(response)
+         this.recipe_detail=response.data
       }
    }
 })
