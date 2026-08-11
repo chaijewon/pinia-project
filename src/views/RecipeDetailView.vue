@@ -2,6 +2,7 @@
     <div class="container">
     <div class="row">
       <table class="table">
+        <tbody>
         <tr>
          <td colspan="3" class="text-center">
            <img :src="recipe_detail.vo.poster" style="width: 750px;height: 350px;object-fit:cover">
@@ -33,14 +34,17 @@
           <td class="text-center">{{recipe_detail.vo.info2}}</td>
           <td class="text-center">{{recipe_detail.vo.info3}}</td>
         </tr>
+        </tbody>
       </table>
       <table>
+        <tbody>
         <tr>
          <td colspan="2"><h3>[조리순서]</h3></td>
         </tr>
         <tr>
           <td>
             <table class="table" v-for="(m,index) in recipe_detail.mList" :key="index">
+            <tbody>
               <tr>
                 <td width=80% class="text-left">{{m}}</td>
                 <td width="20%" class="text-right">
@@ -49,11 +53,14 @@
                   >
                 </td>
               </tr>
+              </tbody>
             </table>
           </td>
         </tr>
+        </tbody>
       </table>
       <table class="table">
+        <tbody>
         <tr>
           <td colspan="2"><h3>[레시피 작성자]</h3></td>
         </tr>
@@ -69,6 +76,7 @@
         <tr>
           <td width=70%>{{recipe_detail.vo.chef_profile}}</td>
         </tr>
+        </tbody>
       </table>
     </div>
   </div>

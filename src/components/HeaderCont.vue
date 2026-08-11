@@ -2,10 +2,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-            <a class="navbar-brand" href="/main/main">Boot+JPA</a>
+            <router-link class="navbar-brand" to="/">Boot+JPA</router-link>
             </div>
             <ul class="nav navbar-nav">
-            <li class="active"><a href="/main/main">Home</a></li>
+            <li class="active"><router-link to="/">Home</router-link></li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">레시피
                 <span class="caret"></span></a>
@@ -15,7 +15,7 @@
                 </ul>
             </li>
             <li><a href="/databoard/list">자료실</a></li>
-            <li><a href="#">동영상 검색</a></li>
+            <li><router-link to="/youtube/list">동영상 검색</router-link></li>
             </ul>
         </div>
     </nav>
