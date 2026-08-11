@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div class="row">
+        총   <span style="color: green;font-size: 20px">{{parseInt(recipe_list.count).toLocaleString()}}</span>개의 맛있는 레시피가 있습니다.
+        </div>
         <div class="row" style="margin-top: 10px">
             <div class="col-sm-3" v-for="(vo,index) in recipe_list.list" :key="index">
                 <a href="#">
@@ -12,6 +15,13 @@
                 </a>
             </div>
         </div>
+        <div class="row text-center" style="margin-top: 10px;">
+            <ul class="pagination">
+                <li v-if="recipe_list.pages[2]>1"><a class="a-link">&laquo;</a></li>
+                <li v-for="(i,index) in range(recipe_list.pages[2],recipe_list.pages[3])" :key="index"><a class="a-link">{{ i }}</a></li>
+                <li v-if="recipe_list.pages[3]<recipe_list.pages[1]"><a class="a-link">&raquo;</a></li>
+            </ul>
+        </div> 
     </div>
 </template>
 <script setup>
@@ -72,6 +82,16 @@ import { useRecipeStore } from '@/store/recipe';
    onMounted(()=>{
       recipeListData(1)
    })
+   const range=(start,end)=>{
+     const arr=[]
+     const len=end-start
+     for(let i=0;i<=len;i++)
+     {
+        arr[i]=start
+        start++
+     }
+     return arr
+   }
 </script>
 <style>
 .row {
@@ -80,5 +100,8 @@ import { useRecipeStore } from '@/store/recipe';
 }
 h3 {
    text-align: center;
+}
+.a-link{
+    cursor: pointer;
 }
 </style>

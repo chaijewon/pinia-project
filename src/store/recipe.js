@@ -6,7 +6,11 @@ export const useRecipeStore=defineStore('recipe',{
    // 1. 저장 공간 (데이터) => state
    // data()
    state:()=>({
-      recipe_list:{},
+      recipe_list:{
+         list:[],
+         pages:[],
+         count:0
+      },
       recipe_detail:{},
       find_list:{}
    }),
